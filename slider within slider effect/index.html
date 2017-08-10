@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Slider in slider</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class='container'>
+      <button class='back'>Back</button>
+      <div class='slider'>
+        <div class='thumbs'>
+          <div class='first'></div>
+          <div class='second'></div>
+          <div class='third'></div>
+        </div>
+      </div>
+      <button class='next'>Next</button>
+    </div>
+  </body>
+  <script>
+  var current = 1;
+  var width = 550;
+  var elementCount = 3;
+  var move = 0;
+  var thumbs = document.querySelector('.thumbs');
+  var next = document.querySelector('.next');
+  var back = document.querySelector('.back');
+
+  next.addEventListener('click', moveRight);
+  back.addEventListener('click', moveLeft);
+
+  function moveRight() {
+    if (current < elementCount){
+      thumbs.classList.toggle('move');
+      move += width;
+      thumbs.style.transform = `translateX(-${move}px)`;
+      current++;
+      console.log(move);
+    }
+    else {
+      move = 0;
+      current = 1;
+      thumbs.style.transform = `translateX(${move}px)`;
+    }
+  }
+
+  function moveLeft() {
+    if (current > 0) {
+      thumbs.classList.toggle('move');
+      move -= width;
+      current--;
+      thumbs.style.transform = `translateX(-${move}px)`;
+    }
+      else {
+        move = 0;
+        current = 1;
+      }
+    }
+
+
+
+  </script>
+</html>
